@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tavola Nonna — Pastas Artesanales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#inicio" class="brand">
+      <span class="brand-mark">Tavola Nonna</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="#reservas" class="nav-cta">Reservar mesa</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Menú</a>
+    <a href="#historia">Historia</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#reservas" class="nav-cta">Reservar mesa</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow-line"><span>Desde 1978 · pasta fresca al huevo, todos los días</span></div>
+      <h1>Pastas artesanales hechas como en casa</h1>
+      <p class="lede">Amasamos cada tanda a mano, con la misma receta que Nonna Elena trajo de Emilia-Romaña. Sin apuros, sin atajos: solo harina, huevo y tiempo.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">Ver la carta</a>
+        <a href="#reservas" class="btn btn-outline">Reservar mesa</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=1000&auto=format&fit=crop" alt="Pasta fresca artesanal recién hecha sobre la mesa">
+      <span class="hero-tag">Tagliatelle del día, amasados esta mañana</span>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span>La carta</span></div>
+      <h2>Cuatro capítulos, una sola cocina</h2>
+      <p>Tocá cualquier plato para ver sus ingredientes. La carta cambia con la estación; estos son nuestros clásicos de siempre.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Categorías del menú">
+      <button class="menu-tab active" data-cat="tradicionales">Pastas tradicionales</button>
+      <button class="menu-tab" data-cat="rellenas">Pastas rellenas</button>
+      <button class="menu-tab" data-cat="salsas">Salsas</button>
+      <button class="menu-tab" data-cat="postres">Postres</button>
+    </div>
+
+    <div class="menu-category active" data-cat="tradicionales">
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Tagliatelle al ragù</span>
+            <span class="dish-price">$8.900</span>
+          </div>
+          <p class="dish-sub">Cinta de huevo, ragú de cocción lenta, parmesano.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> harina 00, huevo de campo, carne braseada 6 horas, tomate San Marzano, vino tinto, parmesano reggiano 24 meses.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Spaghetti alle vongole</span>
+            <span class="dish-price">$9.800</span>
+          </div>
+          <p class="dish-sub">Almejas frescas, ajo, vino blanco, perejil.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> spaghetti de sémola, almejas del día, ajo, vino blanco seco, chile, perejil fresco, aceite de oliva extra virgen.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Trofie al pesto</span>
+            <span class="dish-price">$7.900</span>
+          </div>
+          <p class="dish-sub">Pesto genovés molido a mano, papa y chaucha.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> trofie fresca, albahaca genovesa, piñones tostados, ajo, parmesano, pecorino, papa y chaucha salteadas.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Cacio e pepe</span>
+            <span class="dish-price">$7.500</span>
+          </div>
+          <p class="dish-sub">Tonnarelli, pecorino romano, pimienta negra.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> tonnarelli fresco, pecorino romano DOP, pimienta negra recién molida, agua de cocción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="rellenas">
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Ravioles de ricotta y espinaca</span>
+            <span class="dish-price">$9.200</span>
+          </div>
+          <p class="dish-sub">Manteca salvia, nuez moscada.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> masa de huevo, ricotta fresca, espinaca salteada, nuez moscada, manteca dorada, hojas de salvia.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Tortelloni de osobuco</span>
+            <span class="dish-price">$10.500</span>
+          </div>
+          <p class="dish-sub">Relleno braseado 8 horas, caldo reducido.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> osobuco desmenuzado, mirepoix, caldo de hueso reducido, parmesano, masa fina al huevo.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Agnolotti del plin</span>
+            <span class="dish-price">$9.900</span>
+          </div>
+          <p class="dish-sub">Tres carnes, manteca y romero.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> vitela, cerdo y conejo braseados, espinaca, parmesano, manteca clarificada, romero fresco.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Sorrentinos de jamón crudo</span>
+            <span class="dish-price">$8.700</span>
+          </div>
+          <p class="dish-sub">Mozzarella, jamón crudo, salsa rosa suave.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> jamón crudo curado 18 meses, mozzarella fior di latte, tomate, crema, albahaca.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="salsas">
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Pomodoro</span>
+            <span class="dish-price">$1.500</span>
+          </div>
+          <p class="dish-sub">Tomate San Marzano, albahaca, ajo.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> tomate San Marzano, ajo confitado, albahaca fresca, aceite de oliva.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Bolognesa</span>
+            <span class="dish-price">$2.200</span>
+          </div>
+          <p class="dish-sub">Cocción lenta de 6 horas, tres carnes.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> carne vacuna, cerdo, panceta, tomate, vino tinto, apio, zanahoria, cebolla.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Cuatro quesos</span>
+            <span class="dish-price">$2.400</span>
+          </div>
+          <p class="dish-sub">Parmesano, gorgonzola, fontina, provolone.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> crema fresca, parmesano reggiano, gorgonzola dolce, fontina, provolone picante.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Pesto genovés</span>
+            <span class="dish-price">$2.100</span>
+          </div>
+          <p class="dish-sub">Molido a mano en mortero de mármol.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> albahaca, piñones, ajo, parmesano, pecorino, aceite de oliva extra virgen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="postres">
+      <div class="dish-grid">
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Tiramisú de la casa</span>
+            <span class="dish-price">$4.800</span>
+          </div>
+          <p class="dish-sub">Receta original de Nonna Elena.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> mascarpone, café espresso, savoiardi, cacao amargo, marsala.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Panna cotta de vainilla</span>
+            <span class="dish-price">$4.200</span>
+          </div>
+          <p class="dish-sub">Coulis de frutos rojos de estación.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> crema fresca, vainilla natural, gelatina, frutos rojos macerados.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Cannoli sicilianos</span>
+            <span class="dish-price">$4.500</span>
+          </div>
+          <p class="dish-sub">Ricotta, chocolate, pistacho tostado.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> masa frita, ricotta de oveja, chips de chocolate, pistacho de Bronte.</p>
+          </div>
+        </div>
+        <div class="dish">
+          <div class="dish-top">
+            <span class="dish-name">Affogato</span>
+            <span class="dish-price">$3.600</span>
+          </div>
+          <p class="dish-sub">Helado de vainilla, espresso al momento.</p>
+          <div class="dish-detail">
+            <p><span class="label">Ingredientes:</span> helado artesanal de vainilla, espresso recién extraído, almendras garrapiñadas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-footer">
+      <p>¿Querés ver todo el menú, incluidas variantes sin gluten?</p>
+      <a href="#reservas" class="btn btn-outline">Consultar carta completa por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section id="reservas">
+  <div class="wrap">
+    <div class="reserva-grid">
+      <div class="reserva-info">
+        <div class="eyebrow-line"><span>Reservas</span></div>
+        <h2>Guardamos tu mesa en minutos</h2>
+        <p>Completá tus datos y te los enviamos directo a nuestro WhatsApp. Confirmamos disponibilidad al toque.</p>
+
+        <div class="reserva-points">
+          <div class="reserva-point">
+            <span class="num">1</span>
+            <div>
+              <strong>Completá el formulario</strong>
+              <p>Nombre, cantidad de comensales, fecha y hora.</p>
+            </div>
+          </div>
+          <div class="reserva-point">
+            <span class="num">2</span>
+            <div>
+              <strong>Enviamos el mensaje a WhatsApp</strong>
+              <p>Se abre el chat con todos los datos ya cargados.</p>
+            </div>
+          </div>
+          <div class="reserva-point">
+            <span class="num">3</span>
+            <div>
+              <strong>Confirmamos tu mesa</strong>
+              <p>Te respondemos en el momento para cerrar el horario.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="reserva-form" id="reservaForm">
+        <div class="field">
+          <label for="nombre">Nombre y apellido</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Julia Fernández" required>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="comensales">Comensales</label>
+            <select id="comensales" name="comensales" required>
+              <option value="" disabled selected>Elegí una opción</option>
+              <option value="1 persona">1 persona</option>
+              <option value="2 personas">2 personas</option>
+              <option value="3 personas">3 personas</option>
+              <option value="4 personas">4 personas</option>
+              <option value="5 personas">5 personas</option>
+              <option value="6 o más personas">6 o más personas</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono (opcional)</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 261 555 1234">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </div>
+          <div class="field">
+            <label for="hora">Hora</label>
+            <input type="time" id="hora" name="hora" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="comentario">Comentario (opcional)</label>
+          <textarea id="comentario" name="comentario" placeholder="Alergias, ocasión especial, etc."></textarea>
+        </div>
+
+        <button type="submit" class="whatsapp-btn">
+          Confirmar reserva por WhatsApp
+        </button>
+        <p class="form-note">Se abrirá WhatsApp con tu reserva ya redactada, lista para enviar.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="historia-grid">
+      <div class="historia-img">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1000&auto=format&fit=crop" alt="Elaboración artesanal de pasta a mano en la cocina">
+      </div>
+      <div class="historia-text">
+        <div class="eyebrow-line"><span>Nuestra historia</span></div>
+        <h2 style="font-size: clamp(28px, 3.6vw, 38px); margin-bottom: 22px;">De la mesa de Nonna Elena a la nuestra</h2>
+        <p>Tavola Nonna nació en 1978, cuando Elena empezó a vender su pasta fresca a los vecinos del barrio, amasada sobre la misma mesada de madera que hoy seguimos usando.</p>
+        <p>Cuarenta y cinco años después, sus nietos seguimos la misma regla: nada de máquinas para la masa madre, nada de conservantes, y las salsas se cocinan a fuego lento el tiempo que haga falta, no el que sea cómodo.</p>
+        <p>Cada mañana amasamos a mano, cortamos al momento y armamos los rellenos con lo que trajo el mercado. Lo que no se vende, no se guarda para el día siguiente.</p>
+        <p class="signature">— Familia Bianchi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Ubicación</h3>
+        <p>Av. San Martín 1248<br>Ciudad de Mendoza, Mendoza</p>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=Mendoza,Argentina&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación del restaurante">
+          </iframe>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h3>Horarios</h3>
+        <p>Martes a domingo<br>12:30 a 15:30 hs</p>
+        <p style="margin-top:14px;">Martes a sábado<br>20:00 a 00:00 hs</p>
+        <p style="margin-top:14px;">Lunes cerrado</p>
+      </div>
+      <div class="contact-block">
+        <h3>Contacto</h3>
+        <a href="tel:+542610000000">+54 261 000-0000</a>
+        <a href="mailto:hola@tavolanonna.com">hola@tavolanonna.com</a>
+        <a href="https://wa.me/542610000000" target="_blank" rel="noopener">WhatsApp directo</a>
+        <a href="#" target="_blank" rel="noopener">Instagram @tavolanonna</a>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-brand">Tavola Nonna</span>
+      <p>© 2026 Tavola Nonna. Pasta fresca artesanal.</p>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Menú móvil
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobilePanel.classList.toggle('open');
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobilePanel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobilePanel.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Tabs de categorías del menú
+  const tabs = document.querySelectorAll('.menu-tab');
+  const categories = document.querySelectorAll('.menu-category');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      categories.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.menu-category[data-cat="${tab.dataset.cat}"]`).classList.add('active');
+    });
+  });
+
+  // Expandir detalle de cada plato
+  document.querySelectorAll('.dish').forEach(dish => {
+    dish.addEventListener('click', () => {
+      dish.classList.toggle('open');
+    });
+  });
+
+  // Reserva por WhatsApp
+  const NUMERO_WHATSAPP = "542610000000";
+
+  const reservaForm = document.getElementById('reservaForm');
+  reservaForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const comensales = document.getElementById('comensales').value;
+    const fechaInput = document.getElementById('fecha').value;
+    const horaInput = document.getElementById('hora').value;
+    const telefono = document.getElementById('telefono').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+
+    if (!nombre || !comensales || !fechaInput || !horaInput) {
+      alert('Por favor completá nombre, comensales, fecha y hora.');
+      return;
+    }
+
+    const [anio, mes, dia] = fechaInput.split('-');
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+    let mensaje = `¡Hola! Quiero reservar una mesa en Tavola Nonna 🍝\n\n`;
+    mensaje += `*Nombre:* ${nombre}\n`;
+    mensaje += `*Comensales:* ${comensales}\n`;
+    mensaje += `*Fecha:* ${fechaFormateada}\n`;
+    mensaje += `*Hora:* ${horaInput} hs`;
+    if (telefono) mensaje += `\n*Teléfono:* ${telefono}`;
+    if (comentario) mensaje += `\n*Comentario:* ${comentario}`;
+
+    const url = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+  });
+</script>
+
+<script>
+  async function renderizarMenu() {
+    try {
+      const res = await fetch('/api/platos');
+      const platos = await res.json();
+
+      platos.forEach(plato => {
+        const nombresEnPagina = document.querySelectorAll('.dish-name');
+
+        nombresEnPagina.forEach(elNombre => {
+          if (elNombre.textContent.trim().toLowerCase() === plato.nombre.trim().toLowerCase()) {
+            const platoContenedor = elNombre.closest('.dish');
+            
+            if (platoContenedor) {
+              // 1. Actualiza el precio
+              const elPrecio = platoContenedor.querySelector('.dish-price');
+              if (elPrecio) {
+                elPrecio.textContent = `$${Number(plato.precio).toLocaleString('es-AR')}`;
+              }
+
+              // 2. Inserta la imagen si el plato tiene una URL guardada en la DB
+              if (plato.imagen_url && plato.imagen_url.trim() !== '') {
+                const elDetalle = platoContenedor.querySelector('.dish-detail');
+                
+                let imgExistente = elDetalle.querySelector('.dish-img');
+                if (!imgExistente) {
+                  imgExistente = document.createElement('img');
+                  imgExistente.className = 'dish-img';
+                  elDetalle.insertBefore(imgExistente, elDetalle.firstChild);
+                }
+                
+                imgExistente.src = plato.imagen_url;
+                imgExistente.alt = plato.nombre;
+              }
+            }
+          }
+        });
+      });
+    } catch (err) {
+      console.error('Error cargando los datos desde la API:', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderizarMenu);
+</script>
+</body>
+</html>

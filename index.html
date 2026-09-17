@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santiago Ban Sierra — Desarrollador Full Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1c;
+    --bg-panel:#111a2e;
+    --bg-panel-alt:#16203a;
+    --border:#243252;
+    --text:#eaf0fb;
+    --text-dim:#93a3c4;
+    --text-faint:#5f6d8c;
+    --blue:#4c8dff;
+    --blue-dim:#2f65cf;
+    --green:#33ffa0;
+    --wine:#c2506b;
+    --wheat:#e0a45c;
+    --radius-sm:8px;
+    --radius-md:14px;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    color:var(--text);
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(10,15,28,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo-mark{
+    width:34px;height:34px;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--blue), var(--blue-dim));
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.85rem;
+    color:#06101f;
+    font-weight:700;
+  }
+  nav.links{
+    display:flex;
+    gap:30px;
+    align-items:center;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--text-dim);
+    font-size:0.95rem;
+    transition:color .2s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{color:var(--text);}
+  .status-pill{
+    display:flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    padding:6px 12px;
+    border:1px solid var(--border);
+    border-radius:99px;
+  }
+  .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 8px var(--green);
+  }
+  .menu-btn{
+    display:none;
+    background:none;border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    width:40px;height:40px;
+    font-size:1.2rem;
+    cursor:pointer;
+  }
+
+  @media (max-width:820px){
+    nav.links{
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:var(--bg-panel);
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      border-bottom:1px solid var(--border);
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    nav.links.open{max-height:320px;}
+    nav.links a{
+      width:100%;
+      padding:16px 32px;
+      border-top:1px solid var(--border);
+    }
+    .status-pill{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:90px 0 100px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-200px; right:-160px;
+    width:520px;height:520px;
+    background:radial-gradient(circle, rgba(76,141,255,0.16), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+  }
+  .eyebrow-loc{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--blue);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.2rem);
+    line-height:1.04;
+    font-weight:700;
+  }
+  .hero .role{
+    margin-top:20px;
+    font-size:1.15rem;
+    color:var(--text-dim);
+    max-width:46ch;
+  }
+  .hero .role strong{color:var(--text);font-weight:500;}
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 24px;
+    border-radius:var(--radius-sm);
+    font-size:0.95rem;
+    font-weight:500;
+    text-decoration:none;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:#06101f;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(76,141,255,0.35);
+    background:#649bff;
+  }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--border);
+    color:var(--text);
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{
+    border-color:var(--blue);
+    color:var(--blue);
+    transform:translateY(-2px);
+  }
+  .btn-sm{padding:9px 16px;font-size:0.85rem;}
+
+  /* terminal card */
+  .terminal{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 16px;
+    background:var(--bg-panel-alt);
+    border-bottom:1px solid var(--border);
+  }
+  .terminal-bar span{
+    width:10px;height:10px;border-radius:50%;
+    background:#3a4666;
+  }
+  .terminal-body{
+    padding:22px 20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    color:var(--text-dim);
+  }
+  .terminal-body .key{color:#8fb4ff;}
+  .terminal-body .str{color:var(--green);}
+  .terminal-body p{margin:0 0 4px 26px;}
+  .terminal-body p.top{margin-left:0;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero{padding:56px 0 64px;}
+    .hero-ctas .btn{width:100%;justify-content:center;}
+    .hero-ctas{flex-direction:column;}
+  }
+
+  /* ---------- SECCIONES ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3.4vw, 2.3rem);
+  }
+  .section-head p{
+    color:var(--text-dim);
+    margin-top:14px;
+    font-size:1.02rem;
+  }
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--blue);
+    margin-bottom:14px;
+  }
+
+  #sobre-mi{border-top:1px solid var(--border);}
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:60px;
+  }
+  .about-grid p{color:var(--text-dim); margin:0 0 18px;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .about-facts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:32px;
+  }
+  .fact{
+    border-left:2px solid var(--blue);
+    padding-left:16px;
+  }
+  .fact h3{font-size:1.7rem;}
+  .fact span{color:var(--text-faint); font-size:0.88rem;}
+
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .about-facts{grid-template-columns:1fr;}
+  }
+
+  /* ---------- HABILIDADES ---------- */
+  #habilidades{border-top:1px solid var(--border);background:var(--bg-panel);}
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .skill-card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border-top:3px solid var(--blue-dim);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .skill-card:nth-child(2){border-top-color:var(--green);}
+  .skill-card:nth-child(3){border-top-color:var(--wheat);}
+  .skill-card:hover{transform:translateY(-4px);}
+  .skill-card h3{font-size:1.05rem; margin-bottom:16px;}
+  .tag-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:5px 10px;
+  }
+
+  @media (max-width:820px){
+    .skill-groups{grid-template-columns:1fr;}
+  }
+
+  /* ---------- PROYECTOS ---------- */
+  #proyectos{border-top:1px solid var(--border);}
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .project-card{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--blue-dim);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  }
+  .preview{
+    height:170px;
+    position:relative;
+    overflow:hidden;
+  }
+  .preview svg{width:100%;height:100%;display:block;}
+  .project-body{
+    padding:22px 22px 24px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+  .project-body h3{font-size:1.12rem; margin-bottom:8px;}
+  .project-body p{color:var(--text-dim); font-size:0.92rem; margin:0 0 16px;}
+  .project-tags{
+    display:flex;flex-wrap:wrap;gap:6px;
+    margin-bottom:20px;
+  }
+  .project-actions{
+    display:flex;
+    gap:10px;
+    margin-top:auto;
+  }
+  .project-actions .btn{flex:1;justify-content:center;}
+
+  @media (max-width:980px){
+    .project-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    .project-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CONTACTO ---------- */
+  #contacto{border-top:1px solid var(--border); background:var(--bg-panel);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  label{
+    font-size:0.85rem;
+    color:var(--text-dim);
+    margin-bottom:6px;
+    display:block;
+  }
+  input, textarea{
+    width:100%;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:12px 14px;
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.95rem;
+    transition:border-color .2s ease;
+  }
+  input:focus, textarea:focus{
+    outline:none;
+    border-color:var(--blue);
+  }
+  textarea{resize:vertical; min-height:120px;}
+
+  .whatsapp-card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:30px;
+  }
+  .whatsapp-card h3{font-size:1.2rem; margin-bottom:10px;}
+  .whatsapp-card p{color:var(--text-dim); margin-bottom:24px; font-size:0.95rem;}
+  .btn-whatsapp{
+    background:var(--green);
+    color:#062217;
+    width:100%;
+    justify-content:center;
+    font-weight:600;
+  }
+  .btn-whatsapp:hover, .btn-whatsapp:focus-visible{
+    box-shadow:0 8px 24px rgba(51,255,160,0.3);
+    transform:translateY(-2px);
+    background:#5affb5;
+  }
+
+  @media (max-width:820px){
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  footer{
+    padding:32px;
+    text-align:center;
+    color:var(--text-faint);
+    font-size:0.85rem;
+    border-top:1px solid var(--border);
+  }
+
+  :focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">SB</span>
+      Santiago Ban Sierra
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="status-pill"><span class="dot"></span> disponible para nuevos proyectos</div>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-loc">Mendoza, Argentina</div>
+        <h1>Santiago Ban Sierra</h1>
+        <p class="role">Desarrollador full stack enfocado en <strong>aplicaciones web a medida</strong> y en llevar modelos de <strong>machine learning</strong> a productos reales, desde el diseño de la interfaz hasta la lógica del backend.</p>
+        <div class="hero-ctas">
+          <a href="#proyectos" class="btn btn-primary">Ver mis proyectos</a>
+          <a href="#contacto" class="btn btn-ghost">Hablemos de tu proyecto</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="terminal-body">
+          <p class="top"><span class="key">const</span> developer = {</p>
+          <p><span class="key">nombre</span>: <span class="str">"Santiago Ban Sierra"</span>,</p>
+          <p><span class="key">ubicacion</span>: <span class="str">"Mendoza, AR"</span>,</p>
+          <p><span class="key">stack</span>: [<span class="str">"React"</span>, <span class="str">"Node"</span>, <span class="str">"Python"</span>],</p>
+          <p><span class="key">enfoque</span>: <span class="str">"web + ML aplicado"</span>,</p>
+          <p><span class="key">estado</span>: <span class="str">"disponible"</span></p>
+          <p class="top">};</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-tag">// sobre mí</div>
+        <h2>Construyo software con foco en el detalle</h2>
+      </div>
+      <div>
+        <p>Soy desarrollador full stack con formación técnica en programación y análisis de datos. Trabajo tanto en el frontend como en el backend, e incorporo modelos de machine learning para resolver problemas concretos de negocio.</p>
+        <p>Entiendo el problema antes de escribir código: qué necesita resolver el cliente, quién va a usar el producto y qué resultado se espera. Priorizo interfaces claras, código mantenible y entregas a tiempo.</p>
+        <div class="about-facts">
+          <div class="fact"><h3>3+</h3><span>proyectos entregados</span></div>
+          <div class="fact"><h3>2</h3><span>rubros (agro y gastronomía)</span></div>
+          <div class="fact"><h3>1</h3><span>enfoque útil y directo</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">// stack</div>
+        <h2>Herramientas con las que trabajo</h2>
+        <p>Combino desarrollo web tradicional con herramientas de datos y machine learning cuando el proyecto lo requiere.</p>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-card">
+          <h3>Frontend</h3>
+          <div class="tag-list">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Backend &amp; datos</h3>
+          <div class="tag-list">
+            <span class="tag">Node.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Herramientas</h3>
+          <div class="tag-list">
+            <span class="tag">Git</span>
+            <span class="tag">Figma</span>
+            <span class="tag">APIs REST</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-tag">// proyectos</div>
+        <h2>Trabajos realizados</h2>
+        <p>Tres proyectos de rubros distintos: una bodega de vinos, un sistema agropecuario con machine learning y un restaurante de pastas.</p>
+      </div>
+      <div class="project-grid">
+
+        <article class="project-card">
+          <div class="preview">
+            <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3a1220"/>
+                  <stop offset="100%" stop-color="#7a1f3b"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="220" fill="url(#g1)"/>
+              <circle cx="330" cy="40" r="70" fill="#c2506b" opacity="0.25"/>
+              <path d="M200 40 q0 30 -14 40 q-14 10 -14 32 a14 14 0 0 0 28 0 q0 -22 -14 -32 q-14 -10 -14 -40 z" fill="none" stroke="#e7c9a9" stroke-width="2" opacity="0.7"/>
+              <line x1="180" y1="112" x2="220" y2="112" stroke="#e7c9a9" stroke-width="2" opacity="0.7"/>
+              <line x1="200" y1="112" x2="200" y2="140" stroke="#e7c9a9" stroke-width="2" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>Sitio web para bodega de vinos</h3>
+            <p>Landing institucional para una bodega, con presentación de líneas de vino, historia de la finca y contacto para reservas y degustaciones.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="vino.html" class="btn btn-primary btn-sm">Ver Proyecto / Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="preview">
+            <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0b2a2c"/>
+                  <stop offset="100%" stop-color="#124a4c"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="220" fill="url(#g2)"/>
+              <g stroke="#33ffa0" stroke-width="1" opacity="0.35">
+                <line x1="0" y1="40" x2="400" y2="40"/>
+                <line x1="0" y1="90" x2="400" y2="90"/>
+                <line x1="0" y1="140" x2="400" y2="140"/>
+                <line x1="0" y1="190" x2="400" y2="190"/>
+              </g>
+              <circle cx="290" cy="110" r="8" fill="#33ffa0"/>
+              <circle cx="230" cy="70" r="5" fill="#33ffa0" opacity="0.6"/>
+              <circle cx="340" cy="150" r="5" fill="#33ffa0" opacity="0.6"/>
+              <rect x="260" y="90" width="60" height="40" fill="none" stroke="#33ffa0" stroke-width="1.5" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>Detección de patologías bovinas</h3>
+            <p>Sistema de apoyo diagnóstico basado en machine learning para identificar patologías en ganado bovino a partir de datos e imágenes.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data</span>
+            </div>
+            <div class="project-actions">
+              <a href="BoVibox.html" class="btn btn-primary btn-sm">Ver Proyecto / Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="preview">
+            <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#2c1c0b"/>
+                  <stop offset="100%" stop-color="#6b3f14"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="220" fill="url(#g3)"/>
+              <circle cx="200" cy="110" r="55" fill="none" stroke="#e0a45c" stroke-width="2" opacity="0.7"/>
+              <path d="M160 110 q40 -30 80 0 q-40 30 -80 0 z" fill="none" stroke="#e0a45c" stroke-width="2" opacity="0.6"/>
+              <circle cx="200" cy="110" r="4" fill="#e0a45c"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>Sitio web para restaurante de pastas</h3>
+            <p>Web gastronómica para un restaurante de pastas artesanales, con menú digital dinámico conectado a base de datos, panel de administración para precios e imágenes, y reservas por WhatsApp.</p>
+            <div class="project-tags">
+              <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">SQLite</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="pastas.html" class="btn btn-primary btn-sm">Ver Proyecto / Demo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="section-tag">// contacto</div>
+        <h2 style="margin-bottom:14px;">Trabajemos juntos</h2>
+        <p style="color:var(--text-dim); margin-bottom:28px;">Contame sobre tu proyecto y te respondo a la brevedad.</p>
+        <form action="https://formspree.io/f/maenyadp" method="POST">
+          <div>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" placeholder="tu@email.com" required>
+          </div>
+          <div>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Contame en qué estás trabajando..." required></textarea>
+          </div>
+          
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde el Portafolio">
+
+          <button type="submit" class="btn btn-primary" style="margin-top:6px;">Enviar mensaje</button>
+        </form>
+      </div>
+
+      <div class="whatsapp-card">
+        <h3>¿Preferís algo más directo?</h3>
+        <p>Escribime por WhatsApp y coordinamos una charla rápida sobre tu proyecto.</p>
+        <a class="btn btn-whatsapp"
+           href="https://wa.me/5492617593245?text=Hola%20Santiago%2C%20vi%20tu%20portfolio%20y%20quiero%20consultarte%20sobre%20un%20proyecto"
+           target="_blank" rel="noopener">
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Santiago Ban Sierra. Mendoza, Argentina.
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  
+  menuBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>

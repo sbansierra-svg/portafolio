@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Tavola Nonna</title>
+  <style>
+    body { font-family: sans-serif; background: #121212; color: #fff; padding: 30px; }
+    h1 { color: #c8963e; margin-bottom: 20px; }
+    .plato { display: flex; gap: 15px; margin-bottom: 12px; align-items: center; background: #1e1e1e; padding: 10px 15px; border-radius: 6px; max-width: 750px; }
+    .nombre { width: 180px; font-weight: bold; }
+    .input-precio { width: 80px; }
+    .input-imagen { width: 280px; }
+    input { padding: 6px 10px; border-radius: 4px; border: 1px solid #444; background: #2b2b2b; color: #fff; }
+    button { padding: 6px 12px; background: #c8963e; border: none; color: #000; font-weight: bold; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #e0a948; }
+  </style>
+</head>
+<body>
+  <h1>Administrar Precios e Imágenes — Tavola Nonna</h1>
+  <div id="lista-platos">Cargando platos...</div>
+
+  <script>
+    async function cargarPlatos() {
+      const res = await fetch('/api/platos');
+      const platos = await res.json();
+      const contenedor = document.getElementById('lista-platos');
+      contenedor.innerHTML = '';
+
+      platos.forEach(p => {
+        contenedor.innerHTML += `
+          <div class="plato">
+            <span class="nombre">${p.nombre}</span>
+            <input type="number" class="input-precio" id="precio-${p.id}" value="${p.precio}" placeholder="Precio">
+            <input type="text" class="input-imagen" id="imagen-${p.id}" value="${p.imagen_url || ''}" placeholder="URL de la imagen (http...)">
+            <button onclick="guardar(${p.id})">Guardar</button>
+          </div>
+        `;
+      });
+    }
+
+    async function guardar(id) {
+      const inputPrecio = document.getElementById(`precio-${id}`);
+      const inputImagen = document.getElementById(`imagen-${id}`);
+      
+      const precioNumerico = parseFloat(inputPrecio.value);
+      const urlImagen = inputImagen.value.trim();
+
+      if (isNaN(precioNumerico) || precioNumerico <= 0) {
+        alert('Ingresá un precio válido mayor a 0');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/platos/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            precio: precioNumerico,
+            imagen_url: urlImagen
+          })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert('¡Plato actualizado con éxito!');
+        } else {
+          alert(`Error: ${data.error}`);
+        }
+      } catch (err) {
+        console.error('Error enviando la actualización:', err);
+      }
+    }
+
+    cargarPlatos();
+  </script>
+</body>
+</html>
